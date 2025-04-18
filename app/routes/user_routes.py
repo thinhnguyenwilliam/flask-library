@@ -1,4 +1,6 @@
-from flask import Blueprint, request, jsonify, current_app
+from flask import Blueprint, request, jsonify, current_app,g
+import uuid
+import time
 from app.services.user_service import create_user, get_users
 import logging
 
@@ -7,14 +9,11 @@ import logging
 #logger = logging.getLogger(__name__)
 
 user_bp = Blueprint("users", __name__)
-
-
-
 @user_bp.route("/", methods=["GET"])
 def list_users():
     current_app.logger.info("GET /users - Fetching all users")
     #return jsonify(get_users())
-    #logger.info("GET /users - Fetching all users hi  hi")
+    #logger.info("GET /users - Fetching all users hihi")
     return "Hello, Flask Logging!"
 
 @user_bp.route("/", methods=["POST"])

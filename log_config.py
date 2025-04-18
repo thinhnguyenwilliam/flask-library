@@ -1,38 +1,68 @@
-import logging
-from logging.handlers import RotatingFileHandler
 import os
+import uuid
+import logging
 from datetime import datetime, timezone
-import json_log_formatter
+from flask import has_request_context, request, g
+from logging.handlers import RotatingFileHandler
+from json_log_formatter import JSONFormatter
 
-
-class CustomJSONFormatter(json_log_formatter.JSONFormatter):
+# Custom JSON Formatter for structured logs
+class ProdJSONFormatter(JSONFormatter):
     def json_record(self, message, extra, record):
-        # Add custom fields
         extra['message'] = message
-        extra['time'] = datetime.fromtimestamp(record.created, tz=timezone.utc).strftime('%Y-%m-%d %H:%M:%S')
         extra['level'] = record.levelname
-        extra['module'] = record.module
+        extra['logger'] = record.name
+
+        if has_request_context():
+            extra['method'] = request.method
+            extra['url'] = request.url
+            extra['ip'] = getattr(g, 'log_ip', None)
+            extra['path'] = getattr(g, 'log_path', None)
+            extra['log_id'] = getattr(g, 'log_id', None)
+
         return extra
 
+# Pretty console formatter for development
+class DevConsoleFormatter(logging.Formatter):
+    def format(self, record):
+        time = datetime.fromtimestamp(record.created, tz=timezone.utc).strftime('%H:%M:%S')
+        return f"[{time}] {record.levelname} [{record.module}] {record.getMessage()}"
 
-def setup_logger(app):
+# Logger setup function
+def setup_logger(app, env='production'):
     log_dir = os.path.join(os.getcwd(), 'logs')
     os.makedirs(log_dir, exist_ok=True)
 
-    log_path = os.path.join(log_dir, 'flask_app.log')
+    level = logging.DEBUG if env == 'development' else logging.INFO
+    app.logger.setLevel(level)
+
+    # JSON file handler
     file_handler = RotatingFileHandler(
-        log_path,
-        maxBytes=10 * 1024 * 1024,  # 10MB
+        os.path.join(log_dir, 'flask_app.log'),
+        maxBytes=10 * 1024 * 1024,
         backupCount=5
     )
-    file_handler.setLevel(logging.INFO)
+    file_handler.setLevel(level)
+    file_handler.setFormatter(ProdJSONFormatter())
 
-    formatter = CustomJSONFormatter()
-    file_handler.setFormatter(formatter)
+    # Console handler
+    console_handler = logging.StreamHandler()
+    console_handler.setLevel(level)
+    console_handler.setFormatter(DevConsoleFormatter() if env == 'development' else ProdJSONFormatter())
 
+    # Clear old handlers
     if app.logger.hasHandlers():
         app.logger.handlers.clear()
 
     app.logger.addHandler(file_handler)
-    app.logger.setLevel(logging.INFO)
+    app.logger.addHandler(console_handler)
+
     app.logger.info("Logger initialized ✅")
+
+# Middleware to inject request-specific metadata
+def inject_log_metadata(app):
+    @app.before_request
+    def attach_log_metadata():
+        g.log_id = str(uuid.uuid4())
+        g.log_path = request.path
+        g.log_ip = request.remote_addr

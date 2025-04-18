@@ -1,9 +1,12 @@
+import os
+
 from flask import Flask
 from .config import Config
 from .extensions import db, ma, jwt, cors
 from .routes import register_blueprints
 from urllib.parse import urlparse
-from log_config import setup_logger
+from log_config import setup_logger, inject_log_metadata
+from .middleware import register_middlewares
 
 def create_app():
     app = Flask(__name__)
@@ -36,10 +39,16 @@ def create_app():
     #     }
     # })
 
-    # Setup logging
-    setup_logger(app)
 
+
+    # Register middlewares 👇
+    register_middlewares(app)
 
     register_blueprints(app)
+
+    # Set environment (or use ENV variable)
+    env = os.environ.get('FLASK_ENV', 'production')
+    setup_logger(app, env)
+    inject_log_metadata(app)
 
     return app

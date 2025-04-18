@@ -15,3 +15,22 @@
 {"message": "GET /users - Fetching all users", "time": "2025-04-18T15:41:20.718815+00:00"}
 {"message": "Logger initialized \u2705", "time": "2025-04-18 15:42:24", "level": "INFO", "module": "log_config"}
 {"message": "GET /users - Fetching all users", "time": "2025-04-18 15:42:27", "level": "INFO", "module": "user_routes"}
+{"message": "GET /users - Fetching all users", "time": "2025-04-18 15:56:42", "level": "INFO", "module": "user_routes", "path": "/api/users/", "ip": "127.0.0.1", "log_id": "af76376a-da91-4e0f-8a28-42b48a48117d"}
+{"message": "Logger initialized \u2705", "level": "INFO", "logger": "app"}
+{"message": "\u27a1\ufe0f GET / | ID: 08774dd4-b0e0-4e10-9619-88ba65e085ae | IP: 127.0.0.1", "level": "INFO", "logger": "app", "method": "GET", "url": "http://127.0.0.1:5000/", "ip": null, "path": null, "log_id": null}
+{"message": "\u2b05\ufe0f GET / | ID: 08774dd4-b0e0-4e10-9619-88ba65e085ae | Time: 0.002s | Status: 404", "level": "INFO", "logger": "app", "method": "GET", "url": "http://127.0.0.1:5000/", "ip": "127.0.0.1", "path": "/", "log_id": "af8a9004-6730-47ec-8039-170f03e44dba"}
+{"message": "\u27a1\ufe0f GET /api/users/ | ID: fd635758-795b-4a0d-ab6b-4568ad0a4d1c | IP: 127.0.0.1", "level": "INFO", "logger": "app", "method": "GET", "url": "http://127.0.0.1:5000/api/users/", "ip": null, "path": null, "log_id": null}
+{"message": "GET /users - Fetching all users", "level": "INFO", "logger": "app", "method": "GET", "url": "http://127.0.0.1:5000/api/users/", "ip": "127.0.0.1", "path": "/api/users/", "log_id": "3018b172-9931-4af0-a072-72d1231667e1"}
+{"message": "\u2b05\ufe0f GET /api/users/ | ID: fd635758-795b-4a0d-ab6b-4568ad0a4d1c | Time: 0.002s | Status: 200", "level": "INFO", "logger": "app", "method": "GET", "url": "http://127.0.0.1:5000/api/users/", "ip": "127.0.0.1", "path": "/api/users/", "log_id": "3018b172-9931-4af0-a072-72d1231667e1"}
+{"message": "Logger initialized \u2705", "level": "INFO", "logger": "app"}
+{"message": "\u27a1\ufe0f GET /api/users/ | ID: fc672326-b2b4-450b-9925-aed745281060 | IP: 127.0.0.1", "level": "INFO", "logger": "app", "method": "GET", "url": "http://127.0.0.1:5000/api/users/", "ip": null, "path": null, "log_id": null}
+{"message": "GET /users - Fetching all users", "level": "INFO", "logger": "app", "method": "GET", "url": "http://127.0.0.1:5000/api/users/", "ip": "127.0.0.1", "path": "/api/users/", "log_id": "1b2efd3e-0c3b-480e-8d51-7f2497646c10"}
+{"message": "\u2b05\ufe0f GET /api/users/ | ID: fc672326-b2b4-450b-9925-aed745281060 | Time: 0.002s | Status: 200", "level": "INFO", "logger": "app", "method": "GET", "url": "http://127.0.0.1:5000/api/users/", "ip": "127.0.0.1", "path": "/api/users/", "log_id": "1b2efd3e-0c3b-480e-8d51-7f2497646c10"}
+{"message": "Logger initialized \u2705", "level": "INFO", "logger": "app"}
+{"message": "\u27a1\ufe0f GET / | ID: 19c058ba-3238-464b-8d35-e88413bec1ef | IP: 127.0.0.1", "level": "INFO", "logger": "app", "method": "GET", "url": "http://127.0.0.1:5000/", "ip": null, "path": null, "log_id": null}
+{"message": "\u2b05\ufe0f GET / | ID: 19c058ba-3238-464b-8d35-e88413bec1ef | Time: 0.002s | Status: 404", "level": "INFO", "logger": "app", "method": "GET", "url": "http://127.0.0.1:5000/", "ip": "127.0.0.1", "path": "/", "log_id": "0bb32e58-da9d-4eb0-a853-a110b997b562"}
+{"message": "\u27a1\ufe0f GET / | ID: ffc87270-7206-42f2-9d4c-9b9e15092ec8 | IP: 127.0.0.1", "level": "INFO", "logger": "app", "method": "GET", "url": "http://127.0.0.1:5000/", "ip": null, "path": null, "log_id": null}
+{"message": "\u2b05\ufe0f GET / | ID: ffc87270-7206-42f2-9d4c-9b9e15092ec8 | Time: 0.001s | Status: 404", "level": "INFO", "logger": "app", "method": "GET", "url": "http://127.0.0.1:5000/", "ip": "127.0.0.1", "path": "/", "log_id": "ee2d8d83-feb1-47f5-af24-48aebdd9bd46"}
+{"message": "\u27a1\ufe0f GET /api/users/ | ID: 81c7818f-f22b-44a9-9a34-3d36c9046ea4 | IP: 127.0.0.1", "level": "INFO", "logger": "app", "method": "GET", "url": "http://127.0.0.1:5000/api/users/", "ip": null, "path": null, "log_id": null}
+{"message": "GET /users - Fetching all users", "level": "INFO", "logger": "app", "method": "GET", "url": "http://127.0.0.1:5000/api/users/", "ip": "127.0.0.1", "path": "/api/users/", "log_id": "2b3516dc-5bda-4f77-92d9-4a8fadcfb55d"}
+{"message": "\u2b05\ufe0f GET /api/users/ | ID: 81c7818f-f22b-44a9-9a34-3d36c9046ea4 | Time: 0.002s | Status: 200", "level": "INFO", "logger": "app", "method": "GET", "url": "http://127.0.0.1:5000/api/users/", "ip": "127.0.0.1", "path": "/api/users/", "log_id": "2b3516dc-5bda-4f77-92d9-4a8fadcfb55d"}
