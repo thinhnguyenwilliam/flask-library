@@ -6,7 +6,7 @@ user_bp = Blueprint("users", __name__)
 @user_bp.route("/", methods=["GET"])
 def list_users():
     #return jsonify(get_users())
-    return "hello ngay moi he he"
+    return "hello ngay moi he he bankai"
 
 @user_bp.route("/", methods=["POST"])
 def add_user():
