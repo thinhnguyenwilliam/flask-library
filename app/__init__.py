@@ -1,6 +1,6 @@
 from flask import Flask
 from .config import Config
-from .extensions import db, ma, jwt
+from .extensions import db, ma, jwt, cors
 from .routes import register_blueprints
 from urllib.parse import urlparse
 
@@ -23,6 +23,18 @@ def create_app():
 
     
     '''
+    # Enable CORS
+    cors.init_app(app, supports_credentials=True, resources={r"/api/*": {"origins": ["http://localhost:4200",
+                                                          "https://your-frontend.com"
+                                                          ]}})
+    # cors.init_app(app, resources={
+    #     r"/api/*": {
+    #         "origins": ["http://localhost:4200", "https://myfrontend.com"],
+    #         "methods": ["GET", "POST", "PUT", "DELETE"],
+    #         "allow_headers": ["Content-Type", "Authorization"]
+    #     }
+    # })
+
     register_blueprints(app)
 
     return app
