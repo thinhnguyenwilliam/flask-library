@@ -1,14 +1,23 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, current_app
 from app.services.user_service import create_user, get_users
+import logging
+
+# Set up logging
+#logging.basicConfig(level=logging.INFO)  # Could also use DEBUG, WARNING, ERROR, CRITICAL
+#logger = logging.getLogger(__name__)
 
 user_bp = Blueprint("users", __name__)
 
+
+
 @user_bp.route("/", methods=["GET"])
 def list_users():
+    current_app.logger.info("GET /users - Fetching all users")
     #return jsonify(get_users())
-    return "hello ngay moi he he bankai"
+    #logger.info("GET /users - Fetching all users hi  hi")
+    return "Hello, Flask Logging!"
 
 @user_bp.route("/", methods=["POST"])
 def add_user():
-    data = request.json
-    return jsonify(create_user(data))
+    data = request.get_json()
+    return jsonify(create_user(data)),201

@@ -3,6 +3,7 @@ from .config import Config
 from .extensions import db, ma, jwt, cors
 from .routes import register_blueprints
 from urllib.parse import urlparse
+from log_config import setup_logger
 
 def create_app():
     app = Flask(__name__)
@@ -34,6 +35,10 @@ def create_app():
     #         "allow_headers": ["Content-Type", "Authorization"]
     #     }
     # })
+
+    # Setup logging
+    setup_logger(app)
+
 
     register_blueprints(app)
 

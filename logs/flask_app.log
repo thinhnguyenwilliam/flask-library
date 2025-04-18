@@ -1,0 +1,17 @@
+[2025-04-18 21:53:28,891] INFO in user_routes: List users
+[2025-04-18 21:58:58,647] INFO in user_routes: List users
+[2025-04-18 22:01:37,964] INFO in user_routes: GET /users - Fetching all users
+[2025-04-18 22:11:59,027] INFO in auth_routes: GET /auth/status - Checking login status
+[2025-04-18 22:16:27,141] INFO in user_routes: GET /users - Fetching all users
+[2025-04-18 22:16:27,142] INFO in user_routes: GET /users - Fetching all users
+[2025-04-18 22:17:02,398] INFO in user_routes: GET /users - Fetching all users
+[2025-04-18 22:17:02,399] INFO in user_routes: GET /users - Fetching all users hi  hi
+[2025-04-18 22:18:21,111] INFO in user_routes: GET /users - Fetching all users
+[2025-04-18 22:18:38,759] INFO in user_routes: GET /users - Fetching all users
+{"message": "GET /users - Fetching all users", "time": "2025-04-18T15:30:34.365668+00:00"}
+{"message": "GET /users - Fetching all users", "time": "2025-04-18T15:39:31.235039+00:00"}
+{"message": "Logger initialized \u2705", "time": "2025-04-18T15:40:43.377650+00:00"}
+{"message": "Logger initialized \u2705", "time": "2025-04-18T15:41:17.164176+00:00"}
+{"message": "GET /users - Fetching all users", "time": "2025-04-18T15:41:20.718815+00:00"}
+{"message": "Logger initialized \u2705", "time": "2025-04-18 15:42:24", "level": "INFO", "module": "log_config"}
+{"message": "GET /users - Fetching all users", "time": "2025-04-18 15:42:27", "level": "INFO", "module": "user_routes"}
