@@ -7,10 +7,14 @@ from .routes import register_blueprints
 from urllib.parse import urlparse
 from log_config import setup_logger, inject_log_metadata
 from .middleware import register_middlewares
+from .db import init_db
 
 def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
+
+    with app.app_context():
+        init_db()
 
     # Print full DB URI (optional)
     print("Full DB URI:", app.config["SQLALCHEMY_DATABASE_URI"])
@@ -19,14 +23,12 @@ def create_app():
     parsed = urlparse(app.config["SQLALCHEMY_DATABASE_URI"])
     db_name = parsed.path.lstrip("/")  # removes leading slash
     print("Database name:", db_name)
-
-    '''
     db.init_app(app)
+    '''
     ma.init_app(app)
     jwt.init_app(app)
-
-    
     '''
+
     # Enable CORS
     cors.init_app(app, supports_credentials=True, resources={r"/api/*": {"origins": ["http://localhost:4200",
                                                           "https://your-frontend.com"

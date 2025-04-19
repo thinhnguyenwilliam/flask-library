@@ -8,4 +8,4 @@ from flask_cors import CORS
 db = SQLAlchemy()
 ma = Marshmallow()
 jwt = JWTManager()
-cors = CORS()  # <-- Add this line
+cors = CORS()
